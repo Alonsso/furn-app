@@ -50,7 +50,7 @@ class ForgetMobileView extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return WelcomeScreen();
+                    return LoginView();
                   }),
                 );
               },

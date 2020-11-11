@@ -13,6 +13,7 @@ class LoginMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: Center(
         child: Column(
@@ -20,7 +21,7 @@ class LoginMobilePortrait extends StatelessWidget {
           children: <Widget>[
             //SizedBox(height: size.height * 0.01),
             SvgPicture.asset(
-              "assets/icons/undraw_thought_process_67my.svg",
+              "assets/icons/undraw_discoverable_xwsc.svg",
               height: size.height * 0.3,
             ),
             SizedBox(height: size.height * 0.05),
@@ -28,13 +29,16 @@ class LoginMobilePortrait extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: Icon(
+                      Icons.person,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Usuario',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                   ),
                 )),
@@ -43,15 +47,21 @@ class LoginMobilePortrait extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   obscureText: true,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.visibility),
+                    icon: Icon(
+                      Icons.lock,
+                      color: colorScheme.secondaryVariant,
+                    ),
+                    suffixIcon: Icon(
+                      Icons.visibility,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Contraseña',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                     helperText: '',
                   ),
@@ -68,7 +78,7 @@ class LoginMobilePortrait extends StatelessWidget {
               },
               child: Text(
                 "¿Olvidaste tu contraseña?",
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                style: TextStyle(color: colorScheme.onPrimary, fontSize: 14),
               ),
             ),
 
@@ -77,7 +87,7 @@ class LoginMobilePortrait extends StatelessWidget {
               minWidth: 200,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(29)),
-              color: kPrimaryColor,
+              color: colorScheme.onSecondary,
               onPressed: () {
                 Navigator.push(
                   context,
@@ -93,7 +103,7 @@ class LoginMobilePortrait extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "¿No tienes cuenta?",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: colorScheme.onPrimary),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -107,7 +117,7 @@ class LoginMobilePortrait extends StatelessWidget {
                   child: Text(
                     " Regístrate",
                     style: TextStyle(
-                      color: kPrimaryColor,
+                      color: colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

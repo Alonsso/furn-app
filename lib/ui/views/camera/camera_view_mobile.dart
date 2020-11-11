@@ -4,6 +4,8 @@ import 'package:camera/camera.dart';
 import 'package:furn_ra/ui/views/home/home_view.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
 import 'package:furn_ra/main.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -114,7 +116,7 @@ class _CameraScreenState extends State {
               ),
               backgroundColor: Colors.white,
               onPressed: () {
-                //_onCapturePressed(context);
+                _onCapturePressed(context);
               },
             )
           ],
@@ -132,7 +134,7 @@ class _CameraScreenState extends State {
         child: FlatButton.icon(
           onPressed: () {
             showModalBottomSheet(
-              context: context,
+              context: this.context,
               builder: (context) {
                 return Container(
                   color: Colors.transparent,
@@ -174,7 +176,7 @@ class _CameraScreenState extends State {
         child: FlatButton.icon(
           onPressed: () {
             Navigator.push(
-              context,
+              this.context,
               MaterialPageRoute(builder: (context) {
                 return HomeView();
               }),
@@ -193,20 +195,22 @@ class _CameraScreenState extends State {
       ),
     );
   }
-  /*
+
   void _onCapturePressed(context) async {
     try {
       final path =
           join((await getTemporaryDirectory()).path, '${DateTime.now()}.png');
+
       await controller.takePicture(path);
 
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomeView()),
       );
+
+      print(path);
     } catch (e) {
-      _showCameraException(e);
+      print(e);
     }
   }
-  */
 }

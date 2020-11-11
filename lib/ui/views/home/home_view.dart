@@ -11,10 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: OrientationLayout(
-        portrait: HomeMobilePortrait(),
-        landscape: HomeMobileLandscape(),
-      ),
+      mobile: MyHomePage(),
       tablet: HomeViewTablet(),
     );
   }

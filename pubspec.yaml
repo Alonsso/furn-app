@@ -34,6 +34,7 @@ dependencies:
   path_provider: ^1.6.22
   native_device_orientation: ^0.4.3
   get: ^3.15.0
+  path: 
 
 dev_dependencies:
   flutter_test:
