@@ -15,6 +15,11 @@ class _MyHomePageState extends State<MyHomePage> {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Fotos'),
+        leading: new Container(),
+        centerTitle: true,
+      ),
       body: GridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 1,

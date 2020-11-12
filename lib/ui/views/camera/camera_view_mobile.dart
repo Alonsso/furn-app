@@ -74,6 +74,7 @@ class _CameraScreenState extends State {
       }),
       floatingActionButton: Column(
         //crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Expanded(
               flex: 1,
@@ -127,33 +128,38 @@ class _CameraScreenState extends State {
 
   /// Display a row of toggle to select the camera (or a message if no camera is available).
 
+  Widget _cameraScroll() {
+    final barHeight = 90.0;
+    final vertPadding = 10.0;
+    return Container(
+      height: barHeight,
+      child: ListView.builder(
+        padding: EdgeInsets.symmetric(vertical: vertPadding),
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int _) {
+          return Container(
+            padding: EdgeInsets.only(right: 5.0),
+            width: 70.0,
+            height: barHeight - vertPadding * 2,
+            child: Image(
+              image: NetworkImage(
+                  'https://cdn1.iconfinder.com/data/icons/augmented-reality-ar/64/AR-augmented-reality-360-VR-virtual-512.png'),
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _cameraToggleRowWidget() {
     return Expanded(
       child: Align(
         alignment: Alignment.center,
         child: FlatButton.icon(
           onPressed: () {
-            showModalBottomSheet(
-              context: this.context,
-              builder: (context) {
-                return Container(
-                  color: Colors.transparent,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[Text('Mueble 1')],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[Text("Mueble 2")],
-                      )
-                    ],
-                  ),
-                );
-              },
-            );
+            _cameraScroll();
           },
           icon: Icon(
             Icons.keyboard_arrow_up,

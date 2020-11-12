@@ -15,8 +15,6 @@ const Color lightGreen400 = Color(0xFF66BB6A);
 const Color lightGreen900 = Color(0xFF1E5E20);
 const Color lightGreen600 = Color(0xFF43A047);
 
-const Color lightErrorRed = Color(0xFFC5032B);
-
 const Color lightSurfaceWhite = Color(0xFFFFFBFA);
 
 const darkBackgroundColor = Color(0XFFBDBDBD);

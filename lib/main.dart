@@ -74,12 +74,12 @@ const ColorScheme _lightColorScheme = ColorScheme(
   secondaryVariant: lightGreen300,
   surface: lightSurfaceWhite,
   background: lightBackgroundWhite,
-  error: lightErrorRed,
+  error: Colors.red,
   onPrimary: lightGreen900,
   onSecondary: lightGreen600,
   onSurface: lightGreen900,
   onBackground: lightGreen900,
-  onError: lightErrorRed,
+  onError: Colors.red,
   brightness: Brightness.light,
 );
 
@@ -125,11 +125,11 @@ const ColorScheme _darkColorScheme = ColorScheme(
   secondaryVariant: lightBackgroundWhite,
   surface: lightGreen600,
   background: lightGreen900,
-  error: lightErrorRed,
+  error: Colors.red,
   onPrimary: Colors.white,
   onSecondary: lightGreen900,
   onSurface: Colors.white,
   onBackground: Colors.white,
-  onError: Colors.black,
+  onError: Colors.red,
   brightness: Brightness.dark,
 );

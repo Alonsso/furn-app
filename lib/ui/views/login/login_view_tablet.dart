@@ -13,6 +13,7 @@ class LoginTablet extends StatelessWidget {
   Widget build(BuildContext context) {
     var orientation = MediaQuery.of(context).orientation;
     Size size = MediaQuery.of(context).size;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
         body: orientation == Orientation.portrait
             ? Center(
@@ -30,13 +31,16 @@ class LoginTablet extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: 40, horizontal: 10),
                         child: TextField(
-                          cursorColor: kPrimaryColor,
+                          cursorColor: colorScheme.primaryVariant,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.person),
+                            icon: Icon(
+                              Icons.person,
+                              color: colorScheme.secondaryVariant,
+                            ),
                             labelText: 'Usuario',
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: kPrimaryColor,
+                              color: colorScheme.primaryVariant,
                             )),
                           ),
                         )),
@@ -46,20 +50,26 @@ class LoginTablet extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: 40, horizontal: 10),
                         child: TextField(
-                          cursorColor: kPrimaryColor,
+                          cursorColor: colorScheme.primaryVariant,
                           obscureText: true,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.lock),
-                            suffixIcon: Icon(Icons.visibility),
+                            icon: Icon(
+                              Icons.lock,
+                              color: colorScheme.secondaryVariant,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.visibility,
+                              color: colorScheme.secondaryVariant,
+                            ),
                             labelText: 'Contraseña',
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: kPrimaryColor,
+                              color: colorScheme.primaryVariant,
                             )),
                             helperText: '',
                           ),
                         )),
-                    GestureDetector(
+                    /*GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
@@ -72,7 +82,7 @@ class LoginTablet extends StatelessWidget {
                         "¿Olvidaste tu contraseña?",
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
-                    ),
+                    ),*/
                     SizedBox(height: size.height * 0.02),
                     FlatButton(
                       padding:
@@ -80,7 +90,7 @@ class LoginTablet extends StatelessWidget {
                       minWidth: 200,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(29)),
-                      color: kPrimaryColor,
+                      color: colorScheme.onSecondary,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -100,7 +110,10 @@ class LoginTablet extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           "¿No tienes cuenta?",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: TextStyle(
+                            color: colorScheme.onPrimary,
+                            fontSize: 18,
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -114,7 +127,7 @@ class LoginTablet extends StatelessWidget {
                           child: Text(
                             " Regístrate",
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: colorScheme.onPrimary,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
@@ -142,28 +155,22 @@ class LoginTablet extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          "INICIA SESIÓN",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Colors.black,
-                              decoration: TextDecoration.none),
-                        ),
                         SizedBox(height: size.height * 0.07),
                         Container(
                             width: size.width * 0.4,
                             padding: EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 5),
                             child: TextField(
-                              cursorColor: kPrimaryColor,
+                              cursorColor: colorScheme.primaryVariant,
                               decoration: InputDecoration(
-                                icon: Icon(Icons.person),
+                                icon: Icon(
+                                  Icons.person,
+                                  color: colorScheme.secondaryVariant,
+                                ),
                                 labelText: 'Usuario',
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                  color: kPrimaryColor,
+                                  color: colorScheme.primaryVariant,
                                 )),
                               ),
                             )),
@@ -173,20 +180,26 @@ class LoginTablet extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 5),
                             child: TextField(
-                              cursorColor: kPrimaryColor,
+                              cursorColor: colorScheme.primaryVariant,
                               obscureText: true,
                               decoration: InputDecoration(
-                                icon: Icon(Icons.lock),
-                                suffixIcon: Icon(Icons.visibility),
+                                icon: Icon(
+                                  Icons.lock,
+                                  color: colorScheme.secondaryVariant,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.visibility,
+                                  color: colorScheme.secondaryVariant,
+                                ),
                                 labelText: 'Contraseña',
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                  color: kPrimaryColor,
+                                  color: colorScheme.primaryVariant,
                                 )),
                                 helperText: '',
                               ),
                             )),
-                        GestureDetector(
+                        /*GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
@@ -199,14 +212,14 @@ class LoginTablet extends StatelessWidget {
                             "¿Olvidaste tu contraseña?",
                             style: TextStyle(color: Colors.black, fontSize: 14),
                           ),
-                        ),
+                        ),*/
                         FlatButton(
                           padding: EdgeInsets.symmetric(
                               vertical: 20, horizontal: 100),
                           minWidth: 350,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(29)),
-                          color: kPrimaryColor,
+                          color: colorScheme.onSecondary,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -228,8 +241,8 @@ class LoginTablet extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               "¿No tienes cuenta?",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 18),
+                              style: TextStyle(
+                                  color: colorScheme.onPrimary, fontSize: 18),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -243,7 +256,7 @@ class LoginTablet extends StatelessWidget {
                               child: Text(
                                 " Regístrate",
                                 style: TextStyle(
-                                  color: kPrimaryColor,
+                                  color: colorScheme.onPrimary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
