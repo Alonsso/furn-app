@@ -13,6 +13,7 @@ class ForgetMobileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: Center(
         child: Column(
@@ -20,7 +21,7 @@ class ForgetMobileView extends StatelessWidget {
           children: <Widget>[
             //SizedBox(height: size.height * 0.01),
             SvgPicture.asset(
-              "assets/icons/undraw_mobile_login_ikmv.svg",
+              "assets/icons/undraw_discoverable_xwsc.svg",
               height: size.height * 0.3,
             ),
             SizedBox(height: size.height * 0.05),
@@ -28,13 +29,16 @@ class ForgetMobileView extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.mail),
+                    icon: Icon(
+                      Icons.mail,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Email',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                   ),
                 )),
@@ -45,7 +49,7 @@ class ForgetMobileView extends StatelessWidget {
               minWidth: 200,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(29)),
-              color: kPrimaryColor,
+              color: colorScheme.onSecondary,
               onPressed: () {
                 Navigator.push(
                   context,

@@ -41,11 +41,11 @@ ThemeData _lightTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: _lightColorScheme,
-    textTheme: _lightTextTheme(base.textTheme),
+    //textTheme: _lightTextTheme(base.textTheme),
     primaryColor: kPrimaryColor,
   );
 }
-
+/*
 TextTheme _lightTextTheme(TextTheme base) {
   return base
       .copyWith(
@@ -65,7 +65,7 @@ TextTheme _lightTextTheme(TextTheme base) {
         displayColor: lightGreen900,
         bodyColor: lightGreen900,
       );
-}
+}*/
 
 const ColorScheme _lightColorScheme = ColorScheme(
   primary: lightGreen100,
@@ -92,12 +92,11 @@ ThemeData _darkTheme() {
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
     colorScheme: _darkColorScheme,
-    textTheme: _lightTextTheme(base.textTheme),
-    primaryColor: kPrimaryColor,
-    backgroundColor: darkBackgroundColor,
+    //textTheme: _lightTextTheme(base.textTheme),
+    //backgroundColor: Colors.black,
   );
 }
-
+/*
 TextTheme _darkTextTheme(TextTheme base) {
   return base
       .copyWith(
@@ -117,20 +116,20 @@ TextTheme _darkTextTheme(TextTheme base) {
         displayColor: lightGreen900,
         bodyColor: lightGreen900,
       );
-}
+}*/
 
 const ColorScheme _darkColorScheme = ColorScheme(
   primary: lightGreen100,
-  primaryVariant: kPrimaryColor,
-  secondary: lightGreen50,
-  secondaryVariant: lightGreen900,
-  surface: lightSurfaceWhite,
-  background: lightBackgroundWhite,
+  primaryVariant: lightGreen400,
+  secondary: lightBackgroundWhite,
+  secondaryVariant: lightBackgroundWhite,
+  surface: lightGreen600,
+  background: lightGreen900,
   error: lightErrorRed,
-  onPrimary: lightGreen900,
-  onSecondary: lightGreen600,
-  onSurface: lightGreen900,
-  onBackground: lightGreen900,
-  onError: lightErrorRed,
-  brightness: Brightness.light,
+  onPrimary: Colors.white,
+  onSecondary: lightGreen900,
+  onSurface: Colors.white,
+  onBackground: Colors.white,
+  onError: Colors.black,
+  brightness: Brightness.dark,
 );

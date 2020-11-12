@@ -12,6 +12,7 @@ class RegisterMobilePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: Center(
         child: Column(
@@ -19,7 +20,7 @@ class RegisterMobilePortrait extends StatelessWidget {
           children: <Widget>[
             //SizedBox(height: size.height * 0.01),
             SvgPicture.asset(
-              "assets/icons/undraw_mobile_login_ikmv.svg",
+              "assets/icons/undraw_mobile_login_ikmv(1).svg",
               height: size.height * 0.3,
             ),
             SizedBox(height: size.height * 0.05),
@@ -27,13 +28,16 @@ class RegisterMobilePortrait extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.mail),
+                    icon: Icon(
+                      Icons.mail,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Email',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                   ),
                 )),
@@ -41,13 +45,16 @@ class RegisterMobilePortrait extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: Icon(
+                      Icons.person,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Usuario',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                   ),
                 )),
@@ -56,15 +63,21 @@ class RegisterMobilePortrait extends StatelessWidget {
                 width: size.width * 0.7,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: TextField(
-                  cursorColor: kPrimaryColor,
+                  cursorColor: colorScheme.primaryVariant,
                   obscureText: true,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.visibility),
+                    icon: Icon(
+                      Icons.lock,
+                      color: colorScheme.secondaryVariant,
+                    ),
+                    suffixIcon: Icon(
+                      Icons.visibility,
+                      color: colorScheme.secondaryVariant,
+                    ),
                     labelText: 'Contraseña',
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                      color: kPrimaryColor,
+                      color: colorScheme.primaryVariant,
                     )),
                     helperText: '',
                   ),
@@ -75,7 +88,7 @@ class RegisterMobilePortrait extends StatelessWidget {
               minWidth: 200,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(29)),
-              color: kPrimaryColor,
+              color: colorScheme.onSecondary,
               onPressed: () {
                 Navigator.push(
                   context,
@@ -92,7 +105,7 @@ class RegisterMobilePortrait extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "¿Ya tienes cuenta?",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: colorScheme.onPrimary),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -106,7 +119,7 @@ class RegisterMobilePortrait extends StatelessWidget {
                   child: Text(
                     " Ingresar",
                     style: TextStyle(
-                      color: kPrimaryColor,
+                      color: colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

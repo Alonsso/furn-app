@@ -19,6 +19,6 @@ const Color lightErrorRed = Color(0xFFC5032B);
 
 const Color lightSurfaceWhite = Color(0xFFFFFBFA);
 
-const darkBackgroundColor = Color(0XFFFFC107);
+const darkBackgroundColor = Color(0XFFBDBDBD);
 
 const defaultLetterSpacing = 0.03;
