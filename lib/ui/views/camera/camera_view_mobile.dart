@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:furn_ra/ui/views/arelements/ar_view.dart';
 import 'package:furn_ra/ui/views/home/home_view.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
 import 'package:furn_ra/main.dart';
@@ -88,6 +89,7 @@ class _CameraScreenState extends State {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      //_cameraScroll(),
                       _cameraToggleRowWidget(),
                       _cameraControlWidget(context),
                       _cameraTogglePerfil(),
@@ -133,11 +135,22 @@ class _CameraScreenState extends State {
     final vertPadding = 10.0;
     return Container(
       height: barHeight,
-      child: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: vertPadding),
-        shrinkWrap: true,
+      margin: EdgeInsets.symmetric(vertical: 20.0),
+      child: ListView(
+        //padding: EdgeInsets.symmetric(vertical: vertPadding),
+        //shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int _) {
+        children: <Widget>[
+          Container(
+            width: 160.0,
+            color: Colors.red,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.blue,
+          )
+        ],
+        /*itemBuilder: (BuildContext context, int _) {
           return Container(
             padding: EdgeInsets.only(right: 5.0),
             width: 70.0,
@@ -148,7 +161,7 @@ class _CameraScreenState extends State {
               fit: BoxFit.cover,
             ),
           );
-        },
+        },*/
       ),
     );
   }
@@ -159,7 +172,11 @@ class _CameraScreenState extends State {
         alignment: Alignment.center,
         child: FlatButton.icon(
           onPressed: () {
-            _cameraScroll();
+            Navigator.push(this.context, MaterialPageRoute(
+              builder: (context) {
+                return ArView();
+              },
+            ));
           },
           icon: Icon(
             Icons.keyboard_arrow_up,

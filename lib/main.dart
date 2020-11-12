@@ -96,6 +96,12 @@ ThemeData _darkTheme() {
     //backgroundColor: Colors.black,
   );
 }
+
+ThemeData _obscureTheme() {
+  return ThemeData(
+    backgroundColor: Colors.black,
+  );
+}
 /*
 TextTheme _darkTextTheme(TextTheme base) {
   return base

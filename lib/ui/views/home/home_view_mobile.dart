@@ -19,19 +19,25 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Fotos'),
         leading: new Container(),
         centerTitle: true,
+        backgroundColor: colorScheme.onSecondary,
       ),
       body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 1,
-        mainAxisSpacing: 1.0,
-        shrinkWrap: true,
-        children: List.generate(10, (index) {
+        crossAxisCount: 3,
+        //crossAxisSpacing: 1,
+        //mainAxisSpacing: 1.0,
+        //shrinkWrap: true,
+        children: List.generate(20, (index) {
           return Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(1.0),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(20),
+                  Radius.circular(0),
+                ),
+                image: DecorationImage(
+                  image: NetworkImage(
+                      'https://cdn1.iconfinder.com/data/icons/augmented-reality-ar/64/AR-augmented-reality-360-VR-virtual-512.png'),
+                  fit: BoxFit.cover,
                 ),
                 color: colorScheme.primary,
               ),
