@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:furn_ra/constants.dart';
@@ -10,8 +12,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
   runApp(new MaterialApp(
-    home: MyApp(),
     debugShowCheckedModeBanner: false,
+    home: MyApp(),
   ));
 }
 
@@ -21,19 +23,74 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  Animation<double> animation;
+
+  @override
+  void initState() {
+    _controller = new AnimationController(
+      duration: Duration(seconds: 5),
+      vsync: this,
+    );
+
+    final curvedAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.bounceOut,
+      reverseCurve: Curves.bounceIn,
+    );
+
+    animation = Tween<double>(
+      begin: 0,
+      end: 2,
+    ).animate(curvedAnimation)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          _controller.forward();
+        }
+      });
+    _controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new SplashScreen(
-      seconds: 7,
-      navigateAfterSeconds: new AfterSplash(),
-      title: new Text(
-        'Bienvenido',
-        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+    return Stack(
+      children: [
+        SplashScreen(
+          seconds: 10,
+          navigateAfterSeconds: new AfterSplash(),
+        ),
+        Center(
+          child: Positioned(
+            child: logo(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget logo() {
+    Size size = MediaQuery.of(context).size;
+    return Transform.scale(
+      alignment: Alignment.center,
+      scale: animation.value,
+      child: Image.asset(
+        "assets/images/text824.png",
+        height: size.height * 0.15,
       ),
-      image: new Image.asset('assets/images/text824.png'),
-      backgroundColor: Colors.white,
-      loaderColor: Colors.red,
     );
   }
 }

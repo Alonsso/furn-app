@@ -126,11 +126,28 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait>
                 color: colorScheme.onSecondary,
                 onPressed: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return CameraView();
-                    }),
-                  );
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: Duration(seconds: 2),
+                          transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secAnimation,
+                            Widget child,
+                          ) {
+                            animation = CurvedAnimation(
+                                curve: Curves.elasticInOut, parent: animation);
+                            return ScaleTransition(
+                              scale: animation,
+                              child: child,
+                              alignment: Alignment.center,
+                            );
+                          },
+                          pageBuilder: (BuildContext context,
+                              Animation<double> animation,
+                              Animation<double> secAnimation) {
+                            return CameraView();
+                          }));
                 },
                 child: Text("INGRESAR"),
               ),
@@ -160,21 +177,6 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait>
                   ),
                 ],
               ),
-              /*
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return ForgetView();
-                  }),
-                );
-              },
-              child: Text(
-                "¿Olvidaste tu contraseña?",
-                style: TextStyle(color: colorScheme.onPrimary, fontSize: 14),
-              ),
-            ),*/
             ],
           ),
         ),
