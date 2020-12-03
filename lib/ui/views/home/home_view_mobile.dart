@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:furn_ra/constants.dart';
 import 'package:furn_ra/ui/views/camera/camera_view_mobile.dart';
 import 'package:furn_ra/ui/views/login/login_view.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -21,11 +21,9 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         backgroundColor: colorScheme.onSecondary,
       ),
-      body: GridView.count(
+      /*
+        GridView.count(
         crossAxisCount: 3,
-        //crossAxisSpacing: 1,
-        //mainAxisSpacing: 1.0,
-        //shrinkWrap: true,
         children: List.generate(20, (index) {
           return Padding(
             padding: const EdgeInsets.all(1.0),
@@ -44,6 +42,36 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         }),
+      ),
+       */
+      body: AnimationLimiter(
+        child: GridView.count(
+          crossAxisCount: 3,
+          children: List.generate(20, (index) {
+            return AnimationConfiguration.staggeredGrid(
+              position: index,
+              duration: const Duration(seconds: 3),
+              columnCount: 3,
+              child: ScaleAnimation(
+                child: FadeInAnimation(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(0),
+                      ),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://cdn1.iconfinder.com/data/icons/augmented-reality-ar/64/AR-augmented-reality-360-VR-virtual-512.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      color: colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

@@ -1,14 +1,36 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:furn_ra/constants.dart';
-import 'package:furn_ra/ui/views/camera/camera_view.dart';
-import 'package:furn_ra/ui/views/camera/camera_view_mobile.dart';
-import 'package:furn_ra/ui/views/forget/forget_view.dart';
-import 'package:furn_ra/ui/views/home/home_view.dart';
-import 'package:furn_ra/ui/views/register/register_view.dart';
+import 'dart:math';
 
-class LoginMobilePortrait extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:furn_ra/ui/views/camera/camera_view.dart';
+import 'package:furn_ra/ui/views/register/register_view.dart';
+import 'package:flutter/animation.dart';
+
+class LoginMobilePortrait extends StatefulWidget {
   const LoginMobilePortrait({Key key}) : super(key: key);
+
+  @override
+  _LoginMobilePortraitState createState() => _LoginMobilePortraitState();
+}
+
+class _LoginMobilePortraitState extends State<LoginMobilePortrait>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = new AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+    _controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +42,20 @@ class LoginMobilePortrait extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //SizedBox(height: size.height * 0.01),
-              SvgPicture.asset(
-                "assets/icons/undraw_discoverable_xwsc.svg",
-                height: size.height * 0.3,
+              AnimatedBuilder(
+                animation: _controller.view,
+                builder: (context, child) {
+                  return Transform.rotate(
+                    angle: _controller.value * 2 * pi,
+                    child: Image.asset(
+                      "assets/images/text824.png",
+                      height: size.height * 0.25,
+                    ),
+                  );
+                },
               ),
+              //SizedBox(height: size.height * 0.01),
+
               //SizedBox(height: size.height * 0.05),
               Container(
                   width: size.width * 0.7,

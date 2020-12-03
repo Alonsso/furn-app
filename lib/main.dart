@@ -1,10 +1,7 @@
 import 'package:camera/camera.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:furn_ra/constants.dart';
 import 'package:furn_ra/ui/views/login/login_view.dart';
-import 'package:furn_ra/ui/views/welcome/welcome_view.dart';
 
 List<CameraDescription> cameras;
 
@@ -19,11 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      /*locale: DevicePreview.of(context).locale,
-      builder: DevicePreview.appBuilder,*/
       debugShowCheckedModeBanner: false,
       title: 'FURN',
-      theme: _darkTheme(),
+      theme: _lightTheme(),
       home: LoginView(),
     );
   }
@@ -41,31 +36,9 @@ ThemeData _lightTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: _lightColorScheme,
-    //textTheme: _lightTextTheme(base.textTheme),
     primaryColor: kPrimaryColor,
   );
 }
-/*
-TextTheme _lightTextTheme(TextTheme base) {
-  return base
-      .copyWith(
-        caption: base.caption.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 14,
-          letterSpacing: defaultLetterSpacing,
-        ),
-        button: base.button.copyWith(
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          letterSpacing: defaultLetterSpacing,
-        ),
-      )
-      .apply(
-        fontFamily: 'Consolas',
-        displayColor: lightGreen900,
-        bodyColor: lightGreen900,
-      );
-}*/
 
 const ColorScheme _lightColorScheme = ColorScheme(
   primary: lightGreen100,
@@ -92,8 +65,6 @@ ThemeData _darkTheme() {
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
     colorScheme: _darkColorScheme,
-    //textTheme: _lightTextTheme(base.textTheme),
-    //backgroundColor: Colors.black,
   );
 }
 
@@ -102,27 +73,6 @@ ThemeData _obscureTheme() {
     backgroundColor: Colors.black,
   );
 }
-/*
-TextTheme _darkTextTheme(TextTheme base) {
-  return base
-      .copyWith(
-        caption: base.caption.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 14,
-          letterSpacing: defaultLetterSpacing,
-        ),
-        button: base.button.copyWith(
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          letterSpacing: defaultLetterSpacing,
-        ),
-      )
-      .apply(
-        fontFamily: 'Consolas',
-        displayColor: lightGreen900,
-        bodyColor: lightGreen900,
-      );
-}*/
 
 const ColorScheme _darkColorScheme = ColorScheme(
   primary: lightGreen100,
