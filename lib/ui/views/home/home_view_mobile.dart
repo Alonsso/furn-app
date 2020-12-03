@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: List.generate(20, (index) {
             return AnimationConfiguration.staggeredGrid(
               position: index,
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 1),
               columnCount: 3,
               child: ScaleAnimation(
                 child: FadeInAnimation(

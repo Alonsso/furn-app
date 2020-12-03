@@ -16,12 +16,35 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
+  Animation<double> animation;
+
   @override
   void initState() {
     _controller = new AnimationController(
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 5),
       vsync: this,
     );
+
+    final curvedAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOutCirc,
+      reverseCurve: Curves.easeInCirc,
+    );
+
+    animation = Tween<double>(
+      begin: 0,
+      end: 2 * pi,
+    ).animate(curvedAnimation)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          _controller.forward();
+        }
+      });
     _controller.forward();
     super.initState();
   }
@@ -42,18 +65,14 @@ class _LoginMobilePortraitState extends State<LoginMobilePortrait>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              AnimatedBuilder(
-                animation: _controller.view,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: _controller.value * 2 * pi,
-                    child: Image.asset(
-                      "assets/images/text824.png",
-                      height: size.height * 0.25,
-                    ),
-                  );
-                },
+              Transform.rotate(
+                angle: animation.value,
+                child: Image.asset(
+                  "assets/images/text824.png",
+                  height: size.height * 0.25,
+                ),
               ),
+
               //SizedBox(height: size.height * 0.01),
 
               //SizedBox(height: size.height * 0.05),

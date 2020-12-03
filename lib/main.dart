@@ -2,21 +2,46 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:furn_ra/constants.dart';
 import 'package:furn_ra/ui/views/login/login_view.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 List<CameraDescription> cameras;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-  runApp(MyApp());
+  runApp(new MaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+      seconds: 7,
+      navigateAfterSeconds: new AfterSplash(),
+      title: new Text(
+        'Bienvenido',
+        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+      ),
+      image: new Image.asset('assets/images/text824.png'),
+      backgroundColor: Colors.white,
+      loaderColor: Colors.red,
+    );
+  }
+}
+
+class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'FURN',
       theme: _lightTheme(),
       home: LoginView(),

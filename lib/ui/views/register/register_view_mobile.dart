@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:furn_ra/constants.dart';
 import 'package:furn_ra/ui/views/camera/camera_view.dart';
-import 'package:furn_ra/ui/views/home/home_view.dart';
 import 'package:furn_ra/ui/views/login/login_view.dart';
-import 'package:furn_ra/ui/views/register/register_view.dart';
 
-class RegisterMobilePortrait extends StatelessWidget {
+class RegisterMobilePortrait extends StatefulWidget {
   const RegisterMobilePortrait({Key key}) : super(key: key);
+
+  @override
+  _RegisterMobilePortraitState createState() => _RegisterMobilePortraitState();
+}
+
+class _RegisterMobilePortraitState extends State<RegisterMobilePortrait>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = new AnimationController(
+      duration: new Duration(seconds: 2),
+      vsync: this,
+    )..addListener(() {
+        setState(() {
+          //_controller.forward();
+        });
+      });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +41,17 @@ class RegisterMobilePortrait extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SvgPicture.asset(
-                    "assets/icons/undraw_mobile_login_ikmv(1).svg",
+                  Image.asset(
+                    "assets/images/text824.png",
                     height: size.height * 0.3,
                   ),
                 ],
               ),
               Container(
                 width: size.width * 0.6,
-                //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: Form(
-                  key: key,
+                  //key: super.key,
                   child: Column(
                     children: <Widget>[
                       TextFormField(
@@ -118,7 +136,6 @@ class RegisterMobilePortrait extends StatelessWidget {
                 },
                 child: Text("REGISTRARME"),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
