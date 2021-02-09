@@ -1,6 +1,6 @@
 # furn_ra
 
-A new Flutter project.
+A Flutter based project, using ARCore.
 
 ## Getting Started
 
